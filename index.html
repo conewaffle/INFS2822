@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            This is the title (in the tab of the browser)
+        </title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/underscore/underscore-min.js"></script>
+        <script src="logic.js"></script>
+    </head>
+    <body onload="bodyDidLoad()">
+        <h1>List of things</h1>
+        <label for="itemSet">Add a thing here:</label>
+        <input
+            id="itemSet"
+            type="text"
+            placeholder="write thing here"
+        />
+        <button onclick="userDidClickCreate()">Add</button>
+        <button onclick="downloadJSON()">Download</button>
+
+        <hr />
+        <h2>Upload a file</h2>
+        <input 
+            id="uploader"
+            type="file"
+        />
+        <hr />
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+            </tbody>
+        </table>
+    </body>
+</html>

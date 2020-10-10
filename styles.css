@@ -1,0 +1,19 @@
+body {
+    font-family: "Avenir", sans-serif
+}
+
+
+/* hash for the id of the element */
+#table {
+    border-collapse: collapse;
+}
+
+/* at some level in table, there are tds */
+#table td, th {
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+#table th {
+    background-color: rgb(189, 176, 176);
+}
