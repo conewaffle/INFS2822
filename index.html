@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            This is the title (in the tab of the browser)
+            Weather Observations App
         </title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -10,13 +10,23 @@
         <script src="logic.js"></script>
     </head>
     <body onload="bodyDidLoad()">
-        <h1>List of things</h1>
-        <label for="itemSet">Add a thing here:</label>
-        <input
-            id="itemSet"
-            type="text"
-            placeholder="write thing here"
-        />
+        <h1>Weather Observations App</h1>
+        <h2>Enter daily observations here.</h2>
+        <table>
+            <tr>
+                <td><label for="minInput">Minimum Temp (°C):</label></td>
+                <td><input id="minInput" type="text" placeholder="Enter min temp here"/></td>
+            </tr>
+            <tr>
+                <td><label for="maxInput">Maximum Temp (°C):</label></td>
+                <td><input id="maxInput" type="text" placeholder="Enter max temp here"/></td>
+            </tr>
+            <tr>
+                <td><label for="condInput">Condition:</label></td>
+                <td><input id="condInput" type="text" placeholder="Enter condition here"/></td>
+            </tr>
+        </table>
+    
         <button onclick="userDidClickCreate()">Add</button>
         <button onclick="downloadJSON()">Download</button>
 
@@ -31,8 +41,10 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Action</th>
+                    <th>Min Temp</th>
+                    <th>Max Temp</th>
+                    <th>Condition</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="tablebody">

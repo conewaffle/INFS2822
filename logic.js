@@ -43,12 +43,7 @@ $(document).keyup(function(event) {
 
 function userDidClickCreate() {
     // call capture user data function
-    var userText = captureUserData();
-    // create dictionary variable of id and text
-    var dictionary = {
-        "id": currentId,
-        "text": userText,
-    };
+    var dictionary = captureUserData();
 
     listItems.push(dictionary);
     // pass dictionary to function to draw table
@@ -61,31 +56,48 @@ function captureUserData() {
     // var userText = inputBox.value;
 
     // but now we use
-    var inputBox = $("#itemSet");
-    var userText = inputBox.val();
+    var minBox = $("#minInput");
+    var maxBox = $("#maxInput");
+    var condBox = $("#condInput");
+    var minTemp = minBox.val();
+    var maxTemp = maxBox.val();
+    var cond = condBox.val();
 
     // empty the textfield and re-give the focus
     //inputBox.value = ""; - pre-jquery
-    inputBox.val("");
-    inputBox.focus();
+    minBox.val("");
+    maxBox.val("");
+    condBox.val("");
+    //inputBox.focus();
+    var dictionary = {
+        "id": currentId,
+        "min": minTemp,
+        "max": maxTemp,
+        "cond": cond
+    };
 
-    return userText;
+    return dictionary;
 }
 
 function addItem(dictionary) {
     // instantiating a variables
     var tablebody = document.getElementById("tablebody");
     var myId = dictionary["id"];
-    var userText = dictionary["text"];
+    var minTemp = dictionary["min"];
+    var maxTemp = dictionary["max"];
+    var cond = dictionary["cond"];
+
     // add onclick delete text
     var myActions = "<a onclick='deleteItem(" + dictionary["id"] + ")' href='#'>Delete this one</a>"
   
     // add rows within table body
-    if (dictionary["text"] != "") {
+    if (dictionary["min"] != "" && dictionary["max"] != "" && dictionary["cond"] != "") {
         var rowHtml = "";
-        rowHtml += ("<tr id='item_" + dictionary["id"] + "'>" + 
-                        "<td>" + myId + "</td>" + 
-                        "<td><em>" + userText + "</em></td>" + 
+        rowHtml += ("<tr id='item_" + myId + "'>" + 
+                        "<td>" + myId + "</td>" +
+                        "<td>" + minTemp + "</td>" + 
+                        "<td>" + maxTemp + "</td>" + 
+                        "<td>" + cond + "</td>" + 
                         "<td>" + myActions + "</td>" +                                
                     "</tr>");
         tablebody.innerHTML += rowHtml;
@@ -114,7 +126,7 @@ function deleteItem(id) {
 }
 
 function downloadJSON() {
-    download("data.json", JSON.stringify(listItems, null, '\t'));
+    download("weather_observations.json", JSON.stringify(listItems, null, '\t'));
 }
 
 // adapted from
